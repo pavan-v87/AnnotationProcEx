@@ -1,8 +1,17 @@
 apply plugin: 'com.android.application'
 
+def dir = "$project.buildDir\\generated\\source\\apt"
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
+
+    sourceSets {
+        main {
+            java.srcDirs += dir
+        }
+    }
+
 
     defaultConfig {
         applicationId "com.example.annotationprocex"
@@ -18,6 +27,39 @@ android {
         }
     }
 }
+
+//def annotationDirs = "F:\\Samples\\AnnotationProcEx\\app\\src\\main\\java"
+
+afterEvaluate {
+
+    project ->
+    android.applicationVariants.each { variant ->
+        variant.javaCompile.options.compilerArgs += [
+                '-s',dir
+        ]
+    }
+}
+
+task printInfo() {
+    println("+++++++ BUILD dir :"+dir)
+    def folder = new File(dir)
+
+    // If it exist
+    if(folder.exists()) {
+        folder.delete()
+    }
+    folder.mkdir();
+}
+
+tasks.withType(JavaCompile) {
+    compileTask -> compileTask.dependsOn printInfo
+}
+/*
+tasks.withType(JavaCompile) {
+    options.compilerArgs << '-s \"src/java/main/generated\"'
+}
+*/
+
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])

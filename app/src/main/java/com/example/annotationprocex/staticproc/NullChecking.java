@@ -5,5 +5,11 @@ package com.example.annotationprocex.staticproc;
  */
 public class NullChecking {
 
+    //@ProofOfConceptProperty(readOnly = false)
+    public NullChecking StringBuffer;
+
+    void func(){
+
+    }
 
 }

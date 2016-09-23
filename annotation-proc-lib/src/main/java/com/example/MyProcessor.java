@@ -36,7 +36,7 @@ public class MyProcessor extends AbstractProcessor {
                 if (e.getKind() == ElementKind.CLASS) {
 
                 }
-                fail(e, "Don't do this");
+                //fail(e, "Don't do this");
             }
         }
         return true;

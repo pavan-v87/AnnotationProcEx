@@ -49,8 +49,7 @@ import java.util.*;
  *
  * @author Joseph D. Darcy 
  */
-@SupportedAnnotationTypes("foo.ProofOfConceptProperty")
-@SupportedSourceVersion(SourceVersion.RELEASE_6)
+@SupportedAnnotationTypes({"com.example.ProofOfConceptProperty"})
 public class PocProcessor extends AbstractProcessor {
     private Filer filer;
     private Messager messager;
@@ -123,7 +122,7 @@ public class PocProcessor extends AbstractProcessor {
 
 	if (parentClassName.equals("java.lang.Object")) {
 	    messager.printMessage(ERROR,
-				  "A Property class must have a to-be-generated superclass",
+				  "A Property class must have a to-be-generated superclass" + " We Have " + propertyClass.toString(),
 				  propertyClass);
 	    return;
 	} else {
@@ -316,4 +315,9 @@ public class PocProcessor extends AbstractProcessor {
 	    w.write(";\n");
 	}
     }
+
+	@Override
+	public SourceVersion getSupportedSourceVersion() {
+		return SourceVersion.RELEASE_7;
+	}
 }
