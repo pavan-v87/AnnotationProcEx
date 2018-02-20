@@ -1,3 +1,4 @@
 com.example.MyProcessor
 com.example.PocProcessor
 com.example.FactoryProcessor
+com.example.KpiAnnotationProcessor

@@ -1,5 +1,6 @@
 package com.example.annotationprocex;
 
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +11,7 @@ import com.example.annotationprocex.staticproc.NullChecking;
 @PrintMe
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private MealFactory factory = new MealFactory();
+    //private MealFactory factory = new MealFactory();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +22,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         meal.getPrice();
     }
 
-    public Meal order(String mealName) {
-        return factory.create(mealName);
+    public @Nullable Meal order(String mealName) {
+        return null;//factory.create(mealName);
     }
 
 
